@@ -1,6 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { ArrowRight, BookOpen, Braces, Menu, X } from "lucide-react";
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 const nav = [
   ["/", "Home"], ["/about", "About"], ["/cybersecurity", "Cybersecurity"],
@@ -11,6 +11,19 @@ const nav = [
 export function SiteShell({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  useEffect(() => {
+    const elements = document.querySelectorAll<HTMLElement>("[data-reveal]");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: "0px 0px -32px" });
+    elements.forEach((element) => observer.observe(element));
+    return () => observer.disconnect();
+  }, [pathname]);
   return <div className="min-h-screen bg-background text-foreground">
     <header className="sticky top-0 z-50 border-b border-border/80 bg-background/90 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 lg:px-8">
@@ -51,7 +64,7 @@ export function PageIntro({ eyebrow, title, children }: { eyebrow:string; title:
 }
 
 export function Section({ title, eyebrow, children, className="" }: {title:string; eyebrow?:string; children:ReactNode; className?:string}) {
- return <section className={`mx-auto max-w-7xl px-5 py-16 sm:py-20 lg:px-8 ${className}`}><div className="mb-9 flex items-end justify-between gap-5 border-b border-border pb-5"><div>{eyebrow && <p className="mb-3 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-primary">{eyebrow}</p>}<h2 className="font-serif text-3xl sm:text-4xl">{title}</h2></div><span className="hidden font-mono text-xs text-muted-foreground sm:block">§</span></div>{children}</section>
+ return <section data-reveal className={`mx-auto max-w-7xl px-5 py-16 sm:py-20 lg:px-8 ${className}`}><div className="mb-9 flex items-end justify-between gap-5 border-b border-border pb-5"><div>{eyebrow && <p className="mb-3 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-primary">{eyebrow}</p>}<h2 className="font-serif text-3xl sm:text-4xl">{title}</h2></div><span className="hidden font-mono text-xs text-muted-foreground sm:block">§</span></div>{children}</section>
 }
 
 export function Status({ children }: {children:ReactNode}) { return <span className="inline-flex border border-primary/35 bg-primary/5 px-2.5 py-1 font-mono text-[0.62rem] uppercase tracking-[0.13em] text-primary">{children}</span> }
