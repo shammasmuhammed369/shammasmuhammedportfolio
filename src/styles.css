@@ -67,7 +67,12 @@
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  background: var(--background);
+  min-height: 100vh;
+  background:
+    linear-gradient(115deg, oklch(0.97 0.03 165 / 0.55) 0%, transparent 45%),
+    linear-gradient(245deg, oklch(0.93 0.045 215 / 0.55) 0%, transparent 50%),
+    linear-gradient(180deg, oklch(0.99 0.002 200) 0%, oklch(0.965 0.008 200) 50%, oklch(0.97 0.025 170 / 0.45) 100%);
+  background-attachment: fixed;
   color: var(--foreground);
   font-family: var(--font-sans);
   text-rendering: optimizeLegibility;
