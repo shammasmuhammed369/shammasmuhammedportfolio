@@ -27,3 +27,7 @@ npm run dev
 - TypeScript
 - React
 - Tailwind CSS
+
+## Portfolio security considerations
+
+This portfolio is intentionally static and collects no visitor data. It contains no authentication, database, API keys, analytics, or contact-form submission endpoint. External profile links remain inactive placeholders until verified details are provided; when activated, they should use HTTPS and `rel="noopener noreferrer"`. The site avoids unnecessary third-party scripts and keeps its runtime dependency surface small. Security demonstrations described in the portfolio are restricted to authorized educational laboratories.
