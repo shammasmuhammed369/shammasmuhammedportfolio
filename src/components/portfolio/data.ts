@@ -1,0 +1,4 @@
+export const cyberAreas = ["Networking fundamentals","Linux","Windows fundamentals","Python","JavaScript fundamentals","Web security","Cybersecurity fundamentals","Enumeration","Ethical security testing in authorized laboratories"];
+export const tools = ["Linux","Kali Linux","Python","JavaScript","Git / GitHub","Wireshark","Metasploit","OverTheWire","VMware"];
+export const researchInterests = ["Islamic jurisprudence","Sociology","Technology and society","Cybersecurity and society","Privacy and surveillance","Law and technology","Ethics of emerging technology","Contemporary Islamic legal questions"];
+export const futureThemes = ["Privacy and surveillance","Cybercrime and society","Human behaviour in cybersecurity","Digital evidence","Technology and Islamic legal reasoning","AI and Islamic legal ethics","Cybersecurity, law and ethics"];
