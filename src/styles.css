@@ -69,10 +69,9 @@ body {
   margin: 0;
   min-height: 100vh;
   background:
-    radial-gradient(ellipse at 0% 0%, oklch(0.96 0.035 170 / 0.55) 0%, transparent 55%),
-    radial-gradient(ellipse at 100% 25%, oklch(0.94 0.04 210 / 0.6) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 100%, oklch(0.955 0.032 160 / 0.5) 0%, transparent 55%),
-    var(--background);
+    linear-gradient(115deg, oklch(0.97 0.03 165 / 0.55) 0%, transparent 45%),
+    linear-gradient(245deg, oklch(0.93 0.045 215 / 0.55) 0%, transparent 50%),
+    linear-gradient(180deg, oklch(0.99 0.002 200) 0%, oklch(0.965 0.008 200) 50%, oklch(0.97 0.025 170 / 0.45) 100%);
   background-attachment: fixed;
   color: var(--foreground);
   font-family: var(--font-sans);
