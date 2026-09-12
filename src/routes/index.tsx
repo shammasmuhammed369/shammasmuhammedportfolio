@@ -1,24 +1,19 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight, Network, Scale, Users } from "lucide-react";
+import { Section, TextLink } from "../components/portfolio/site";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  component: Index,
+ head:()=>({meta:[{title:"Muhammad Shammas N — Cybersecurity & Society"},{name:"description",content:"An interdisciplinary student portfolio exploring cybersecurity, sociology, and Islamic jurisprudence."},{property:"og:title",content:"Muhammad Shammas N — Cybersecurity × Society × Islamic Jurisprudence"},{property:"og:description",content:"Practical cybersecurity development and interdisciplinary inquiry into technology, society, law, and ethics."}],links:[{rel:"canonical",href:"/"}]}), component:Home
 });
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
+const overview=[
+ {n:"01",t:"Cybersecurity",d:"Networking • Linux • Python • Web Security • Security Labs"},
+ {n:"02",t:"Research",d:"Sociology • Islamic Jurisprudence • Technology & Society"},
+ {n:"03",t:"Current Focus",d:"Cybersecurity foundations • Practical laboratories • Interdisciplinary research"},
+];
+function Home(){return <>
+<section className="relative min-h-[calc(100vh-4rem)] overflow-hidden border-b border-border"><div className="absolute inset-0 grid-texture opacity-50"/><div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 py-16 lg:min-h-[760px] lg:grid-cols-[1.15fr_.85fr] lg:px-8">
+ <div><p className="reveal font-mono text-[0.68rem] uppercase tracking-[0.2em] text-primary">Interdisciplinary student portfolio</p><h1 className="reveal delay-1 mt-7 font-serif text-5xl leading-[.98] sm:text-7xl lg:text-[5.6rem]">Muhammad<br/>Shammas N</h1><p className="reveal delay-2 mt-7 text-lg font-medium sm:text-xl">Cybersecurity <span className="text-primary">×</span> Society <span className="text-primary">×</span> Islamic Jurisprudence</p><p className="reveal delay-3 mt-6 max-w-2xl text-base leading-8 text-muted-foreground">I am developing practical cybersecurity skills while studying sociology and Islamic jurisprudence, with an interdisciplinary interest in technology, security, society, law, and ethics.</p><div className="reveal delay-3 mt-9 flex flex-wrap gap-3"><Link to="/projects" className="inline-flex h-11 items-center gap-2 bg-primary px-5 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5">View My Work <ArrowRight size={16}/></Link><Link to="/research" className="inline-flex h-11 items-center gap-2 border border-border px-5 text-sm font-semibold transition-colors hover:border-primary/60">View Research</Link></div></div>
+ <div className="reveal delay-2 mx-auto hidden w-full max-w-md lg:block" aria-label="Cybersecurity, society, and law and ethics relationship"><div className="relative aspect-square"><div className="absolute inset-[18%] rounded-full border border-primary/20"/><div className="absolute left-1/2 top-[8%] -translate-x-1/2 border border-border bg-panel px-5 py-4 text-center"><Network className="mx-auto text-primary"/><span className="mt-2 block font-mono text-xs">SECURITY</span></div><div className="absolute bottom-[15%] left-[2%] border border-border bg-panel px-5 py-4 text-center"><Users className="mx-auto text-primary"/><span className="mt-2 block font-mono text-xs">SOCIETY</span></div><div className="absolute bottom-[15%] right-[2%] border border-border bg-panel px-5 py-4 text-center"><Scale className="mx-auto text-primary"/><span className="mt-2 block font-mono text-xs">LAW & ETHICS</span></div><div className="absolute left-1/2 top-1/2 grid size-20 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-primary/50 bg-background font-serif text-2xl text-primary">×</div></div></div>
+ </div></section>
+ <Section eyebrow="Current profile" title="Three connected fields"><div className="grid gap-px border border-border bg-border lg:grid-cols-3">{overview.map(x=><article key={x.n} className="card-lift bg-panel p-7"><span className="font-mono text-xs text-primary">{x.n}</span><h2 className="mt-12 font-serif text-2xl">{x.t}</h2><p className="mt-4 text-sm leading-6 text-muted-foreground">{x.d}</p></article>)}</div><div className="mt-8"><TextLink to="/about">Read my profile</TextLink></div></Section>
+ </>}
